@@ -284,13 +284,14 @@ class LineGraph extends React.Component {
   render() {
     const { updateMetric, metric, topStatData, query, site, graphData } = this.props
     const extraClass = this.props.graphData && this.props.graphData.interval === 'hour' ? '' : 'cursor-pointer'
+    const graphContainerClass = classNames('relative px-2', { 'hidden': !metric })
 
     return (
-      <div className="graph-inner">
+      <div>
         <div className="flex flex-wrap" ref={this.boundary}>
           <TopStats query={query} metric={metric} updateMetric={updateMetric} topStatData={topStatData} tooltipBoundary={this.boundary.current}/>
         </div>
-        <div className="relative px-2">
+        <div className={graphContainerClass}>
           <div className="absolute right-4 -top-10 py-2 md:py-0 flex items-center">
             { this.downloadLink() }
             { this.samplingNotice() }
@@ -473,8 +474,8 @@ export default class VisitorGraph extends React.Component {
 
     return (
       <LazyLoader onVisible={this.onVisible}>
-        <div className={`relative w-full mt-2 bg-white rounded shadow-xl dark:bg-gray-825 transition-padding ease-in-out duration-150 ${metric ? 'main-graph' : 'top-stats-only'}`}>
-          {loadingOrRefreshing && <div className="graph-inner"><div className={loaderClassName}><div></div></div></div>}
+        <div className={`relative w-full mt-2 bg-white rounded shadow-xl dark:bg-gray-825 transition-padding ease-in-out duration-150`}>
+          {loadingOrRefreshing && <div><div className={loaderClassName}><div></div></div></div>}
           {this.renderInner()}
         </div>
       </LazyLoader>
