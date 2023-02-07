@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - Fix breakdown API pagination when using event metrics plausible/analytics#2562
 - Automatically update all visible dashboard reports in the realtime view
 - Connect via TLS when using HTTPS scheme in ClickHouse URL plausible/analytics#2570
+- Fix bug when combining goal and prop filters plausible/analytics#2654
 
 ### Changed
 - Reject events with long URIs and data URIs plausible/analytics#2536
